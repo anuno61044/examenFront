@@ -1,0 +1,59 @@
+.container-Menús-items {
+    padding: 50px;
+    background-color: #775124;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 50% 15%;
+    border-top-left-radius: 50% 15%;
+    position: relative;
+    z-index: 10;
+}
+.container-Recetas-items {
+    padding: 50px;
+    background-color: #2d6a4e;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 50% 15%;
+    border-top-left-radius: 50% 15%;
+    position: relative;
+    z-index: 10;
+}
+.container-Ingredientes-items {
+    padding: 50px;
+    background-color: #aa7a41;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 400px 70px;
+    border-top-left-radius: 400px 70px;
+    position: relative;
+    z-index: 10;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header button {
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    height: fit-content;
+    box-shadow:-3px 3px 10px 0px #00000096;
+} 
+
+.items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media screen and (max-width: 800px) {
+    .items {
+        grid-template-columns: 1fr;
+    }
+}

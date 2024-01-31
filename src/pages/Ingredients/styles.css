@@ -1,0 +1,27 @@
+.ingredientslist-content {
+    height: 100%;
+    background-image: url("../../images/ingredients.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.black {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #00000069;
+    z-index: 1;
+}
+
+.main-content {
+    position: relative;
+    z-index: 10;
+}
+
+.topic {
+    margin: 100px 0px;
+    text-align: center;
+    color: white;
+}
