@@ -5,6 +5,21 @@
     border-radius: 40px;
     box-shadow: -3px 3px 10px 0px #00000096;
 }
+.item-ingredient {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    background-color: #f3cd9e;
+    border-radius: 40px;
+    box-shadow: -3px 3px 10px 0px #00000096;
+}
+.item-recipe {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    background-color: #f3cd9e;
+    border-radius: 40px;
+    box-shadow: -3px 3px 10px 0px #00000096;
+}
+
 
 .img-item img {
     width: 100%;
@@ -19,6 +34,7 @@
     justify-content: space-between;
 }
 
-.actions-items a {
+.actions-items svg {
     padding-right: 20px;
+    cursor: pointer;
 }

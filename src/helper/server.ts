@@ -1,35 +1,38 @@
-// import Swal from 'sweetalert2';
-// import { tpResponse } from '../files/interfaces';
+import Swal from 'sweetalert2';
+import { tpRecipe } from '../files/types';
+import { tpItem } from '../files/types';
 
-// function mostrarAletra1() {
-//     Swal.fire("Succesfull");
-// }
+// URL del servidor JSON
+const urlBase:string = "http://localhost:3001/"
 
-// function mostrarAletra(data: tpResponse) {
-//     Swal.fire(data.errorMessage);
-// }
+export const recipeFetchGETone = (endpoint:string, setRecipe: React.Dispatch<React.SetStateAction<tpRecipe>>) => {
+    fetch(`${urlBase}${endpoint}`)
+        .then(response => response.json())
+        .then(jsonData => {
+            setRecipe(jsonData);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })}
+        )
+}
 
-const urlBase = ""
-
-export const myuseFetch = (endpoint: string, data: object, method: string = 'POST') => {
-    return fetch(`${urlBase}/${endpoint}`, {
-        method: method,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        return data;
-    })
-    .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-    })
-};
+export const itemFetchGETall = (endpoint:string, setItem: React.Dispatch<React.SetStateAction<tpItem[]>>) => {
+    fetch(`${urlBase}${endpoint}`)
+        .then(response => response.json())
+        .then(jsonData => {
+            setItem(jsonData);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })}
+        )
+}

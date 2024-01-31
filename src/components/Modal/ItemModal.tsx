@@ -1,17 +1,17 @@
 import Modal from 'react-bootstrap/Modal';
-import { UserModalProps } from '../../files/interfaces';
+import { ItemModalProps, } from '../../files/interfaces';
 import RecipeForm from '../Form/RecipeForm'; 
 import MenuForm from '../Form/MenuForm'; 
 import IngredientForm from '../Form/IngredientForm';
 
 // Vista para mostrar el Modal
-function ItemModal({handleClose, type, show}:UserModalProps) {
+function ItemModal({handleClose, id, type, show}:ItemModalProps) {
 
     let content;
     let header;
     switch (type) {
         case "Recetas":
-            content = <RecipeForm/> // formulario de recetas
+            content = <RecipeForm id={id}/> // formulario de recetas
             header = "Crear una receta"
             break;
         case "Menús":

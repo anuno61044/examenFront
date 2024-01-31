@@ -1,25 +1,32 @@
 import { ItemTypeProps } from '../../files/interfaces';
-import Item from '../Item/Item'
+import Item from '../Item/Ingredient'
 import './styles.css'
 import ItemModal from '../Modal/ItemModal';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { tpItem } from '../../files/types';
+import { itemFetchGETall } from '../../helper/server';
 
 function ContainerItems({type}:ItemTypeProps) {
 
-    const data = [
-        { title: 'Titulo 1', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 2', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 3', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 1', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 2', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 3', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 1', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 2', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 3', photo: '../../images/plate.jpg' },
-        { title: 'Titulo 4', photo: '../../images/plate.jpg' }
-        // Añade más objetos aquí
-    ];
+    const [data, setData] = useState<tpItem[]>([])
+
+    useEffect(() => {
+        switch (type) {
+            case "Menús":
+                itemFetchGETall("menus", setData)
+                break;
+            case "Recetas":
+                itemFetchGETall("recetas", setData)
+                break;
+            case "Ingredientes":
+                itemFetchGETall("ingredientes", setData)
+                break;
+            default:
+                break;
+        }
+    },)
+       
 
     // Clase del contenedor de los items según su tipo
     const str:string = `container-${type}-items`
@@ -36,11 +43,11 @@ function ContainerItems({type}:ItemTypeProps) {
                 <Button className="text-light" variant="" onClick={handleShow}>
                     Añadir
                 </Button>
-                <ItemModal handleClose={handleClose} type={type} show={show}/>
+                <ItemModal handleClose={handleClose} id={0} type={type} show={show}/>
             </div>
             <div className="items">
                 {data.map((item) => (
-                    <Item title={item.title} photoUrl={item.photo}/>
+                    <Item type={type} title={item.nombre} photoUrl={item.foto}/>
                 ))}
             </div>
         </div>

@@ -1,16 +1,16 @@
-export interface tpIngredient {
-    id: number,
+export interface tpItem {
+    id?: number,
     nombre: string,
-    foto:string,
+    foto:string
+}
+
+export interface tpIngredient extends tpItem {
     cantidad_disponible:number
 }
 
-export interface tpRecipe {
-    id: number,
-    nombre: string,
+export interface tpRecipe extends tpItem{
     ingredientes:tpIngredient[],
-    instrucciones: string,
-    foto: string
+    instrucciones: string
 }
 
 export interface tpPlate {

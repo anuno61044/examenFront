@@ -1,12 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import { ItemIdProps } from '../../files/interfaces';
+import { recipeFetchGETone } from '../../helper/server';
+import { tpRecipe } from '../../files/types';
 
-function RecipeForm() {
-    const [recipe, setRecipe] = useState({
-            nombre: "",
-            instrucciones: "",
-            foto: ""
-        } 
-    )
+function RecipeForm({id}:ItemIdProps) {
+    const [recipe, setRecipe] = useState<tpRecipe>({
+        nombre: "",
+        instrucciones: "",
+        foto: "",
+        ingredientes: [], 
+        id: 0
+    });
+
+    useEffect(() => {
+        loadRecipe()
+    },[])
+
+    const loadRecipe = () => {
+        if(id != null)
+            recipeFetchGETone(`recetas/${id}`, setRecipe)
+    }
 
     const handleSubmit = () => {
         // manejar el fetching de datos
