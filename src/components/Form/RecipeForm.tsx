@@ -3,8 +3,11 @@ import { ItemIdProps } from '../../files/interfaces';
 import { recipeFetchGETone } from '../../helper/server';
 import { tpIngredient, tpRecipe } from '../../files/types';
 import { ingredientsFetchGETall } from '../../helper/server';
+import MultiSelectDropdown from '../MultipleSelect/MultipleSelectIngredientes';
 
 function RecipeForm({id}:ItemIdProps) {
+
+    const [ingredients, setIngredients] = useState<tpIngredient[]>([])
     const [recipe, setRecipe] = useState<tpRecipe>({
         nombre: "",
         instrucciones: "",
@@ -13,21 +16,21 @@ function RecipeForm({id}:ItemIdProps) {
         id: 0
     });
 
-    const [ingredients, setIngredients] = useState<tpIngredient[]>([])
-
+    const loadRecipe = () => {
+        if(id != null)
+            recipeFetchGETone(`recetas/${id}`, setRecipe)
+    }
+    
+    const loadIngredients = () => {
+        ingredientsFetchGETall('ingredientes', setIngredients)
+    }
+    
     useEffect(() => {
         loadRecipe()
         loadIngredients()
     },[])
 
-    const loadRecipe = () => {
-        if(id != null)
-            recipeFetchGETone(`recetas/${id}`, setRecipe)
-    }
-
-    const loadIngredients = () => {
-        ingredientsFetchGETall('ingredientes', setIngredients)
-    }
+    
 
     const handleSubmit = () => {
         // manejar el fetching de datos
@@ -49,12 +52,7 @@ function RecipeForm({id}:ItemIdProps) {
         }
     }
 
-    // Select Handler
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selected = Array.from(event.currentTarget.selectedOptions, option => option.value);
-        setSelectedOptions(selected);
-    };
+    
 
     return (
         <>
@@ -102,12 +100,7 @@ function RecipeForm({id}:ItemIdProps) {
                     <label htmlFor="Nombre" className='mb-2'>Ingredientes</label>
                 </div>
                 <div className="input-group form-group">
-                <select multiple={true} value={selectedOptions} onChange={handleChange}>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                    <option value="option4">Option 4</option>
-                </select>
+                    <MultiSelectDropdown/>
                 </div>
                 <div className="form-group d-flex flex-column align-items-center">
                     <input type="submit" value="Añadir" className="btn btn-dark login_btn"/>
