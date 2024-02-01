@@ -63,3 +63,11 @@ export interface UserModalProps {
     type: string;
     show: boolean
 }
+
+// MultiSelects
+
+export interface MultiSelectIngredientsProps {
+    handleSelect: (ingredient: tpIngredient) => void,
+    handleDeselect: (ingredient: tpIngredient) => void,
+    ingredients: tpIngredient[]
+}

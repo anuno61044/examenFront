@@ -1,0 +1,12 @@
+#logo-qrico {
+    width: 55px;
+    border-radius: 30px;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.navbar ul {
+    list-style: none;
+}

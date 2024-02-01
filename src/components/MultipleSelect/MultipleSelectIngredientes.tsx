@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
+import { MultiSelectIngredientsProps } from '../../files/interfaces';
 
-const MultiSelectIngredients: React.FC = () => {
- const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
- const options: string[] = ['Option 1', 'Option 2', 'Option 3', 'Option 2', 'Option 3', 'Option 2', 'Option 3', 'Option 2', 'Option 3', 'Option 2', 'Option 3', 'Option 2', 'Option 3', 'Option 2', 'Option 3', 'Option 2', 'Option 3'];
-
- const handleSelect = (option: string) => {
-    setSelectedOptions([...selectedOptions, option]);
- };
-
- const handleDeselect = (option: string) => {
-    setSelectedOptions(selectedOptions.filter(opt => opt !== option));
- };
+const MultiSelectIngredients: React.FC = ({handleSelect, handleDeselect}:MultiSelectIngredientsProps) => {
+ 
 
  return (
     <Dropdown>

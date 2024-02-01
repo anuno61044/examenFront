@@ -3,7 +3,7 @@ import { ItemIdProps } from '../../files/interfaces';
 import { recipeFetchGETone } from '../../helper/server';
 import { tpIngredient, tpRecipe } from '../../files/types';
 import { ingredientsFetchGETall } from '../../helper/server';
-import MultiSelectDropdown from '../MultipleSelect/MultipleSelectIngredientes';
+import MultiSelectIngredients from '../MultipleSelect/MultipleSelectIngredientes';
 
 function RecipeForm({id}:ItemIdProps) {
 
@@ -51,6 +51,19 @@ function RecipeForm({id}:ItemIdProps) {
             default:
         }
     }
+
+    // Handle Ingredients
+    const [selectedIngredients, setSelectedIngredients] = useState<tpIngredient[]>([]);
+
+    
+
+    const handleSelect = (ingredient: tpIngredient) => {
+        setSelectedIngredients([...selectedIngredients, ingredient]);
+    };
+
+    const handleDeselect = (ingredient: tpIngredient) => {
+    setSelectedIngredients(selectedIngredients.filter(opt => opt.id !== ingredient.id));
+    };
 
     
 
@@ -100,7 +113,7 @@ function RecipeForm({id}:ItemIdProps) {
                     <label htmlFor="Nombre" className='mb-2'>Ingredientes</label>
                 </div>
                 <div className="input-group form-group">
-                    <MultiSelectDropdown/>
+                    
                 </div>
                 <div className="form-group d-flex flex-column align-items-center">
                     <input type="submit" value="Añadir" className="btn btn-dark login_btn"/>
@@ -109,5 +122,6 @@ function RecipeForm({id}:ItemIdProps) {
         </>
     )
 }
+{/* <MultiSelectIngredients handleSelect={handleSelect} handleDeselect={handleDeselect}/> */}
 
 export default RecipeForm 

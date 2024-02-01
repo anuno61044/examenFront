@@ -7,13 +7,13 @@ function Home() {
     return (
         <>
             <div className="home-content">
-                <NavBar/>
-
-                <h2 className="text-light text-center mt-5">"Me gusta comer, yo puedo cocinar"</h2>
-                
+                <div className="black"></div>
+                <div className="main-content">
+                    <NavBar/>
+                    <h2 className="text-light text-center mt-5">"Me gusta comer, yo puedo cocinar"</h2>
+                </div>
             </div>
 
-            
         </>
     )
 }
