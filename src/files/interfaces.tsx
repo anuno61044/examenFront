@@ -1,6 +1,7 @@
 import { tpIngredient, tpItem, tpMenu, tpRecipe } from "./types";
 
 export interface ItemProps {
+    id?: number,
     type:string,
     title: string,
     photoUrl: string
@@ -11,7 +12,7 @@ export interface ItemTypeProps {
 }
 
 export interface ItemIdProps {
-    id: number
+    id?: number
 }
 
 
@@ -53,7 +54,7 @@ export interface IngredientModalProps {
 
 export interface ItemModalProps {
     handleClose: () => void;
-    id: number;
+    id?: number;
     type: string;
     show: boolean;
 }

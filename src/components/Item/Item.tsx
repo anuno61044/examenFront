@@ -6,7 +6,7 @@ import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import ItemModal from '../Modal/ItemModal';
 
-function Ingredient({ id, title, photoUrl }: ItemProps) {
+function Item({ type, id, title, photoUrl }: ItemProps) {
 
 
     const editItem = () => {
@@ -21,6 +21,7 @@ function Ingredient({ id, title, photoUrl }: ItemProps) {
         console.log(`item ${id} eliminado`)
     }
 
+
     // Gestionar la vista del modal
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -28,7 +29,7 @@ function Ingredient({ id, title, photoUrl }: ItemProps) {
 
     return (
     <>
-        <div className="item-ingredient">
+        <div className="item">
             <div className="img-item">
                 <img src={photoUrl || img} alt="menu-photo"/>
             </div>
@@ -40,8 +41,8 @@ function Ingredient({ id, title, photoUrl }: ItemProps) {
                 </div>
             </div>
 
-            <ItemModal handleClose={handleClose} id={id} type={"edit"} show={show}/>
+            <ItemModal handleClose={handleClose} id={id} type={type} show={show}/>
         </div>
     </>
     )
-} export default Ingredient
+} export default Item

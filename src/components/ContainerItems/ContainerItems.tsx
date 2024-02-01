@@ -1,5 +1,5 @@
 import { ItemTypeProps } from '../../files/interfaces';
-import Item from '../Item/Ingredient'
+import Item from '../Item/Item'
 import './styles.css'
 import ItemModal from '../Modal/ItemModal';
 import Button from 'react-bootstrap/Button';
@@ -43,11 +43,11 @@ function ContainerItems({type}:ItemTypeProps) {
                 <Button className="text-light" variant="" onClick={handleShow}>
                     Añadir
                 </Button>
-                <ItemModal handleClose={handleClose} id={0} type={type} show={show}/>
+                <ItemModal handleClose={handleClose} type={type} show={show}/>
             </div>
             <div className="items">
                 {data.map((item) => (
-                    <Item type={type} title={item.nombre} photoUrl={item.foto}/>
+                    <Item type={type} id={item.id} title={item.nombre} photoUrl={item.foto}/>
                 ))}
             </div>
         </div>
